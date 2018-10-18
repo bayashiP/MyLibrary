@@ -2,6 +2,7 @@
 
  ********************************************************/
 #include <string>
+#include <cmath>
 #include <iostream>
 #include <sstream>
 using namespace std;
@@ -20,7 +21,7 @@ public:
   Complex(const Complex& c)       { _r = c._r; _i = c._i; }
 
 
-  //Functions to access the number
+  /*    Functions    */
 
   //@function toString()
   string toString(){
@@ -123,6 +124,16 @@ ostream& operator<<(ostream& os, Complex c){
   return os;
 }
 
+
+
+
+
+/*####################################################################*/
+/*    Other Functions    */
+double abs(Complex c){
+  return sqrt(c.real()*c.real() + c.imaginary()*c.imaginary());
+}
+
 /*####################################################################*/
 /*    main() for test    */
 
@@ -131,17 +142,26 @@ ostream& operator<<(ostream& os, Complex c){
 
 int main(){
 
-  Complex a(1,2), b(4,2);
+  const string separator="#######################################";
+  
+  Complex a(4,3), b(4,2);
   
   cout << "Original:" << endl;
   cout << "a = " << a << endl;
   cout << "b = " << b << endl;
-
+  cout << separator << endl;
   cout << "a+b = " << a+b << endl;
   cout << "a-b = " << a-b << endl;
-  cout << "a*b = " << a*b << " = " << b*a << endl;
+  cout << "a*b = " << a*b << endl;
   cout << "a/b = " << a/b << endl;
-
+  cout << separator << endl;
+  cout << "-a = " << -a << endl;
+  cout << "~a = " << ~a << endl;
+  cout << "|a|= " << abs(a) << endl;
+  cout << separator << endl; 
+  cout << a<<"=="<<b<<" ? : " << (a==b) << endl;
+  a = b;
+  cout << a<<"=="<<b<<" ? : " << (a==b) << endl;
   
   return 0;
 }
