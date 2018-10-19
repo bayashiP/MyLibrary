@@ -283,6 +283,10 @@ bool Othello::canReverseLine(int x, int y, Direction d, char color){
 //@end: canReverseLine()
 
 
+
+
+
+
 //@function: Othello::printBoardCLI()
 //@descript: Output the board to command line
 //@argument: [assistFlag] if this is true, print '*' in the cells
@@ -341,6 +345,11 @@ void Othello::printBoardCLI(bool assistFlag){
 
 
 
+
+
+
+
+
 //@function: Othello::inputHandCLI()
 //@descript: Input interface for CLI.
 //@argument: [&x][&y] record the input in this variable
@@ -358,6 +367,11 @@ bool Othello::inputHandCLI(int &x, int &y){
   return false;
 }
 //@end: inputHandCLI()
+
+
+
+
+
 
 
 

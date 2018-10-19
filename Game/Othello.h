@@ -24,7 +24,13 @@ typedef enum{
 } Direction;
 
 
-  
+
+
+/*
+  class Othello:
+  To use this othello engine, make an object and call
+  playGame() method.
+ */
 class Othello{
 private:
   char **board;        //state of the board
