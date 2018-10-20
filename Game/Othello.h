@@ -1,5 +1,9 @@
 /****************************************************
 Othello.h
+
+    If you want to play othello game on CLI, execute:
+    $ make othello
+    $ ./othello
  ****************************************************/
 #include <cstdlib>
 using namespace std;

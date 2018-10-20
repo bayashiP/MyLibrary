@@ -120,8 +120,8 @@ bool Othello::putPiece(int x, int y, char color){
     success = true;
   }
   if( canReverseLine(x, y, W , color) ){
-    for(int i=1; board[y][x+i]!=color; i++){
-      board[y][x+i]=color;
+    for(int i=1; board[y][x-i]!=color; i++){
+      board[y][x-i]=color;
       if(color==BLACK){ num_piece_black++; num_piece_white--; }
       else            { num_piece_black--; num_piece_white++; }
     }
@@ -141,10 +141,16 @@ bool Othello::putPiece(int x, int y, char color){
   if(success){
     turn++;
     board[y][x] = color;
+    if(color==BLACK){ num_piece_black++;  }
+    else            { num_piece_white++;  }
   }
   return success;
 }
 //@end: putPiece()
+
+
+
+
 
 
 
@@ -217,7 +223,7 @@ bool Othello::canReverseLine(int x, int y, Direction d, char color){
 	board[y][x+1] != color  &&  board[y][x+1] != EMPTY    ){
       for(int i=x+2; i<b_size ; i++){
 	if     (board[y][i]==color) return true;
-	else if(board[i][x]==EMPTY) return false;
+	else if(board[y][i]==EMPTY) return false;
       }
     }
     break;
@@ -227,7 +233,7 @@ bool Othello::canReverseLine(int x, int y, Direction d, char color){
 	board[y][x-1] != color  &&  board[y][x-1] != EMPTY    ){
       for(int i=x-2; i>=0 ; i--){
 	if     (board[y][i]==color) return true;
-	else if(board[i][x]==EMPTY) return false;
+	else if(board[y][i]==EMPTY) return false;
       }
     }
     break;
@@ -451,7 +457,20 @@ void Othello::playGame(){
     }
     
   }
+  //@end: while()
 
+
+  //Print result
+  cout << "==================================================" << endl;
+  cout << "[Result]" << endl;
+  cout << "Black:"<<num_piece_black << "   White:"<<num_piece_white<<endl;
+  cout << endl;
+  if     (num_piece_black > num_piece_white)cout << "Black Win!" << endl;
+  else if(num_piece_black < num_piece_white)cout << "White Win!" << endl;
+  else                                      cout << "Draw" << endl;
+  cout << endl;
+  cout << "==================================================" << endl;
+  
 }
 //@end: playGame()
 
@@ -465,7 +484,11 @@ void Othello::playGame(){
 
 int main(){
 
-  Othello game;
+  int bsize;
+  cout << "Input Board Size(default: 8) ===> ";
+  cin  >> bsize;
+  
+  Othello game(bsize);
   game.playGame();
   return 0;
 }
